@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
@@ -17,5 +18,23 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
         ]);
+    }
+
+    /**
+     * @Route("/test", name="test_page")
+     */
+    public function testAction(Request $request)
+    {
+        $response = $this->render('default/test.html.twig');
+        return  $response;
+        /*
+        return new Response("
+            <!DOCTYPE html>
+            <html>
+                <head></head>
+                <body>Coucou</body>
+            </html>
+        ");
+        */
     }
 }
