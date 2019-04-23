@@ -37,4 +37,21 @@ class DefaultController extends Controller
         ");
         */
     }
+
+    /**
+     * @Route("/page-de-test", name="toto")
+     */
+    public function totoAction(Request $request)
+    {
+        return new Response("0");
+    }
+
+    /**
+     * @Route("/page-de-test-avec-template", name="toto2")
+     */
+    public function toto2Action(Request $request)
+    {
+        $templateHtml = $this->renderView('default/page_test_template.html.twig');
+        return new Response($templateHtml);
+    }
 }
