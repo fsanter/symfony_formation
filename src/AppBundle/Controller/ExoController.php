@@ -21,4 +21,34 @@ class ExoController extends Controller
      * Dans la page 3, le controller doit faire une multiplication
      * et passer au template le résultat de cette multiplication pour l'afficher
      */
+
+    /**
+     * @Route("/page-1", name="premiere_page")
+     */
+    public function page1Action(Request $request)
+    {
+        $templateHtml = $this->render('exo/page1.html.twig');
+        return $templateHtml;
+    }
+
+    /**
+     * @Route("/page-2", name="deuxieme_page")
+     */
+    public function page2Action(Request $request)
+    {
+        $templateHtml = $this->render('exo/page2.html.twig');
+        return $templateHtml;
+    }
+
+    /**
+     * @Route("/page-3", name="trosieme_page")
+     */
+    public function page3Action(Request $request)
+    {
+        $resultat = 150 * 12.53;
+        $templateHtml = $this->render('exo/page3.html.twig', [
+            'resultat' => $resultat
+        ]);
+        return $templateHtml;
+    }
 }
