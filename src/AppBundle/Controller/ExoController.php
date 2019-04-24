@@ -51,4 +51,17 @@ class ExoController extends Controller
         ]);
         return $templateHtml;
     }
+
+    /**
+     * @Route("/page-4/{annee}/{mois}/{jour}",
+     *     name="quatrieme_page",
+     *     requirements={"annee"="\d{4}", "mois"="\d{2}"},
+     *     defaults={"jour"="01"}
+     *     )
+     */
+    public function page4Action(Request $request)
+    {
+
+        return new Response(0);
+    }
 }
