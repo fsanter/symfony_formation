@@ -48,7 +48,22 @@ class RoutingController extends Controller
 
     public function routing5Action(Request $request)
     {
-        $templateHtml = $this->render('routing/routing5.html.twig');
+        /* passer un tableau du controller à la vue */
+        $tableauNumerique = ['toto', 'salut', 'ordinateur'];
+        $tableauAssociatif = ['cle1' => 10, 'zipcode' => '59000'];
+
+        /* on affiche rien dans le controller */
+        /*
+         * NON ON FAIT PAS CA :
+        foreach ($tableauNumerique as $value) {
+            echo $value;
+        }
+        */
+
+        $templateHtml = $this->render('routing/routing5.html.twig', [
+            'tableauNumerique' => $tableauNumerique,
+            'tableauAssociatif' => $tableauAssociatif
+        ]);
         return $templateHtml;
     }
 }
