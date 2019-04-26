@@ -9,4 +9,5 @@
 {% block body %}
     {{ article.getTitle() }}<br>
     {{ article.getDescription() }}<br>
+    Publié le {{ article.getCreatedAt() | date('d/m/Y à H:i:s') }}
 {% endblock %}

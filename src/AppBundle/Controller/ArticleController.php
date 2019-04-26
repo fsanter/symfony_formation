@@ -17,9 +17,51 @@ class ArticleController extends Controller
         $article = new Article();
         $article->setTitle("Titre de l'article 1");
         $article->setDescription("Ici c'est la description de le produit");
+        $article->setIsOnline(true);
+        $article->setCreatedAt(new \DateTime());
 
         $response = $this->render('article/view.html.twig', [
             'article' => $article
+        ]);
+        return $response;
+    }
+
+    /**
+     * @Route("/article/insert", name="article_insert")
+     */
+    public function insertAction() {
+        $article = new Article();
+        $article->setTitle("Titre de l'article 2");
+        $article->setDescription("Ici c'est la description 2");
+        $article->setIsOnline(true);
+        $article->setCreatedAt(new \DateTime());
+
+        // récupérer le manager de doctrine pour insérer en bdd
+        $em = $this->getDoctrine()->getManager();
+        // persist sert à dire à doctrine de gérer cet objet
+        $em->persist($article);
+        // flush sert à envoyer réellement les requêtes à la bdd
+        $em->flush();
+
+        return new Response("Article bien enregistré id : ".$article->getId());
+    }
+
+    /**
+     * @Route("/article/view-all", name="article_view_all")
+     */
+    public function viewAllAction() {
+        // récupérer le manager de doctrine pour récupérer les articles en bdd
+        $em = $this->getDoctrine()->getManager();
+        // on récupère le repository correspond, ici on veut les articles en bdd
+        // et la méthode findAll renvoie tous ces articles
+        $articles = $em->getRepository('AppBundle:Article')->findAll();
+        $articlesOnline = $em->getRepository('AppBundle:Article')->findBy([
+            'isOnline' => true
+        ]);
+
+        $response = $this->render('article/view_all.html.twig', [
+            'articles' => $articles,
+            'articlesOnline' => $articlesOnline
         ]);
         return $response;
     }
