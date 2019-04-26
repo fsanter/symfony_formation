@@ -12,7 +12,9 @@
             <h1> Titre page </h1>
         {% endblock %}
 
-        {% include 'exo/menu.html.twig' %}
+        {% block menu %}
+            {% include 'exo/menu.html.twig' %}
+        {% endblock %}
 
         {% block body %}
         {% endblock %}

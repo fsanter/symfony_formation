@@ -6,6 +6,10 @@ exo:
   resource: '@AppBundle/Controller/ExoController.php'
   type: annotation
 
+twig:
+  resource: '@AppBundle/Controller/TwigController.php'
+  type: annotation
+
 # Nom de la route
 page_routing1:
     # URL de la route

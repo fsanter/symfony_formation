@@ -69,3 +69,9 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+        - { name: twig.extension }
