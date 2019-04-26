@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block menu %}
+{# surcharge du block menu dans base.html.twig : on laisse le block vide
+    donc plus de menu sur ce template
+#}
+{% endblock %}
+
+{% block body %}
+    {{ article.getTitle() }}<br>
+    {{ article.getDescription() }}<br>
+{% endblock %}

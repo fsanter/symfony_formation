@@ -10,6 +10,10 @@ twig:
   resource: '@AppBundle/Controller/TwigController.php'
   type: annotation
 
+article:
+  resource: '@AppBundle/Controller/ArticleController.php'
+  type: annotation
+
 # Nom de la route
 page_routing1:
     # URL de la route
