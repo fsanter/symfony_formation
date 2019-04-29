@@ -33,3 +33,17 @@ php bin/console doctrine:schema:update --force
 
 Pensez à vérifier que tout est ok avant avec le paramètre --dump-sql
 php bin/console doctrine:schema:update --dump-sql
+
+
+Exercice :
+Créer l'entité Utilisateur avec les propriétés suivantes :
+id, email, dateNaissance, createdAt, password
+- coder l'entité (avec ligne de commande doctrine:generate:entity)
+- mettez la base de données à jour (doctrine:schema:update)
+
+Créer le controller (routes, méthodes, template) qui va manipuler cet objet (CRUD) :
+UserController :
+avec les méthodes :
+    - insertAction() : insérer un utilisateur en bdd
+    - viewAction($id) : afficher un utilisateur, donc faites le template associé
+    - removeAction($id) : supprimer un utilisateur en bdd
