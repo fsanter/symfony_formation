@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block menu %}{% endblock %}
+
+{% block body %}
+    {# afficher les champs du formulaire un par un, en utilisant
+       la variable formArticle passée depuis le controller #}
+    {{ form_start(formArticle) }}
+        {{ form_row(formArticle.title) }}
+        {{ form_row(formArticle.description) }}
+        {{ form_row(formArticle.isOnline) }}
+
+        <input type="submit" value="Enregistrer l'article" />
+    {{ form_end(formArticle) }}
+{% endblock %}

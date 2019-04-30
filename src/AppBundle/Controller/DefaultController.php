@@ -81,4 +81,13 @@ class DefaultController extends Controller
         );
         return new Response($templateHtml);
     }
+
+    /**
+     * @Route("/tuto-form", name="tuto_form")
+     */
+    public function tutoFormAction(Request $request)
+    {
+        $templateHtml = $this->renderView('tuto/tuto-form.html.twig');
+        return new Response($templateHtml);
+    }
 }

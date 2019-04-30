@@ -18,6 +18,10 @@ user:
   resource: '@AppBundle/Controller/UserController.php'
   type: annotation
 
+article_form:
+  resource: '@AppBundle/Controller/ArticleFormController.php'
+  type: annotation
+
 # Nom de la route
 page_routing1:
     # URL de la route

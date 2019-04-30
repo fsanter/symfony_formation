@@ -49,6 +49,12 @@ class Article
      */
     private $isOnline;
 
+    // constructeur : valeurs par défaut de toute nouvelle instance
+    public function __construct()
+    {
+        // mettre le createdAt avec la date actuelle
+        $this->setCreatedAt(new \DateTime());
+    }
 
     /**
      * Get id

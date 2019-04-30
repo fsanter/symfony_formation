@@ -60,7 +60,7 @@ class UserController extends Controller
 
         // 2-ou en une ligne
         $formBuilder = $this->get('form.factory')->createBuilder(
-            UserType::class, $user
+           UserType::class, $user
         );
 
         // 3-on ajoute les champs dans le formulaire
