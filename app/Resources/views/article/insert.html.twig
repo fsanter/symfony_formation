@@ -6,10 +6,15 @@
     {# afficher les champs du formulaire un par un, en utilisant
        la variable formArticle passée depuis le controller #}
     {{ form_start(formArticle) }}
-        {{ form_row(formArticle.title) }}
+        {# {{ form_row(formArticle.title) }} #}
+        {{ form_label(formArticle.title) }}
+        {{ form_widget(formArticle.title, {'attr':{'class': 'form-control', 'placeholder': 'Ici un titre'}}) }}
+        {{ form_errors(formArticle.title) }}
+
         {{ form_row(formArticle.description) }}
         {{ form_row(formArticle.isOnline) }}
 
         <input type="submit" value="Enregistrer l'article" />
+
     {{ form_end(formArticle) }}
 {% endblock %}

@@ -37,9 +37,18 @@ class ArticleFormController extends Controller
         // dont les propriétés ont été automatiquement settées
         // par le composant formulaire lros du "handleRequest"
         if ($form->isSubmitted()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($article);
-            $em->flush();
+            // vérifier si le formulaire est valide
+            // isValid() va aller chercher dans la configuration de l'entité les contraintes
+            // et automatiquement faire les vérifcations PHP adéquates$
+
+            // toutes les contraintes ici :
+            // https://symfony.com/doc/3.4/reference/constraints.html
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($article);
+                $em->flush();
+            }
+
         }
 
         // 6- générer le template twig en lui passant la vue de l'objet formulaire

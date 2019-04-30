@@ -3,12 +3,15 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Article
  *
  * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleRepository")
+ * @UniqueEntity("title")
  */
 class Article
 {
@@ -25,6 +28,11 @@ class Article
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir un titre !")
+     * @Assert\Email(
+     *     message = "L'adresse {{ value }} n'est pas a valid email.",
+     *     checkMX = true
+     * )
      */
     private $title;
 
@@ -32,6 +40,11 @@ class Article
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     *
+     * @Assert\Regex(
+     *     pattern= "/[a-z]{3,}/",
+     *     message= "Veuillez saisir au moins trois caractères"
+     * )
      */
     private $description;
 
