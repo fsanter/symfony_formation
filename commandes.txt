@@ -50,3 +50,18 @@ avec les méthodes :
     - insertAction() : insérer un utilisateur en bdd
     - viewAction($id) : afficher un utilisateur, donc faites le template associé
     - removeAction($id) : supprimer un utilisateur en bdd
+
+
+  Exercice :
+  - Lier les deux entités Category et Article
+  - Un article doit avoir une catégorie
+  - Une categorie peut avoir plusieurs articles
+  1- Coder la configuration dans chaque entité
+  2- Mettre à jour les entités (getter/setter,etc.)
+    php bin/console doctrine:generate:entities AppBundle
+
+  3- Mettre à jour la base
+    php bin/console doctrine:schema:update --force
+
+  4- Ajouter dans le formulaire php article le champs categorie
+  5- Ajouter dans la vue le champ categorie

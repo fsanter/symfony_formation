@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -57,6 +58,14 @@ class User
     public function __construct()
     {
         $this->setCreatedAt(new \DateTime());
+
+        /** une collection
+         * (un objet qui a une propriété qui est elle-même un tableau d'objet)
+         * doit être initialisé dans le constructeur avec une collection vide
+         * la commande qui regénère les entités le fait tout seul,
+         * sauf si le constructeur existait déjà
+         */
+        $this->articles = new ArrayCollection();
     }
 
     public function __toString()
@@ -64,10 +73,11 @@ class User
         return $this->getEmail();
     }
 
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {

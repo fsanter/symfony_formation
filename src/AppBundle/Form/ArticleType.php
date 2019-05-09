@@ -21,6 +21,9 @@ class ArticleType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('isOnline', CheckboxType::class)
             ->add('user', null, [])
+            ->add('category', null, [
+                'choice_label' => 'name'
+            ])
         ;
     }/**
      * {@inheritdoc}
