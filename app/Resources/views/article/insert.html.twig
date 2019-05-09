@@ -13,8 +13,10 @@
 
         {{ form_row(formArticle.description) }}
         {{ form_row(formArticle.isOnline) }}
+        {{ form_row(formArticle.user) }}
 
         <input type="submit" value="Enregistrer l'article" />
 
+    {# si un champ n'a pas été ajouté, form_end va l'afficher quoi qu'il arrive#}
     {{ form_end(formArticle) }}
 {% endblock %}

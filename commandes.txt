@@ -28,6 +28,9 @@ php bin/console doctrine:database:create
 Générer une entité :
 php bin/console doctrine:generate:entity
 
+Régénerer une entité (après avoir ajouter des propriétés dans la classe par exemple)
+php bin/console doctrine:generate:entities AppBundle
+
 Mettre la base de données à jour en fonction des entités présentes dans le code
 php bin/console doctrine:schema:update --force
 

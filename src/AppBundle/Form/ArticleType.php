@@ -20,6 +20,7 @@ class ArticleType extends AbstractType
             ->add('title', TextType::class)
             ->add('description', TextareaType::class)
             ->add('isOnline', CheckboxType::class)
+            ->add('user', null, [])
         ;
     }/**
      * {@inheritdoc}
