@@ -24,6 +24,12 @@ class ArticleType extends AbstractType
             ->add('category', null, [
                 'choice_label' => 'name'
             ])
+            ->add('tags', null, [
+                'choice_label' => 'name'
+            ])
+            ->add('image', null, [
+                'choice_label' => 'path'
+            ])
         ;
     }/**
      * {@inheritdoc}
