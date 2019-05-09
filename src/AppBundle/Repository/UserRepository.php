@@ -10,4 +10,20 @@ namespace AppBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLess18() {
+        // récupérer un querybuilder pour créer une query
+        $qb = $this->createQueryBuilder('u');
+
+        $now = new \DateTime();
+        $now->sub(new \DateInterval('P18Y'));
+
+        // mettre des conditions dans la query
+        $qb->where('u.dateNaissance >= :param1')
+            ->setParameter('param1', $now);
+
+        // trié par date naissance
+        $qb->orderBy('u.dateNaissance');
+
+        return $qb->getQuery()->getResult();
+    }
 }
