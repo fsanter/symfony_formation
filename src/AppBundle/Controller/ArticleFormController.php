@@ -13,7 +13,7 @@ use AppBundle\Form\ArticleType;
 class ArticleFormController extends Controller
 {
     /**
-     * @Route("/article/insert-with-form", name="article_insert_with_form")
+     * @Route("/insert-with-form", name="article_insert_with_form")
      */
     public function insertWithFormAction(Request $request) {
         // 1- créer une instance de Article
@@ -57,5 +57,43 @@ class ArticleFormController extends Controller
             'formArticle' => $form->createView()
         ]);
 
+    }
+
+
+    // le controller pour se connecter au firewall article
+    /**
+     * @Route("/login", name="article_login")
+     */
+    public function loginAction() {
+        // https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3624755-securite-et-gestion-des-utilisateurs
+
+        // Le service authentication_utils permet de récupérer le nom d'utilisateur
+        // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
+        // (mauvais mot de passe par exemple)
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+
+        // dans un controller pour vérifier si l'utilisateur est connecté et a un role particulier
+        $roleAdmin = false;
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
+            $roleAdmin = true;
+        }
+
+        return $this->render('article/login.html.twig', [
+            'error' => $authenticationUtils->getLastAuthenticationError(),
+            'roleAdmin' => $roleAdmin
+        ]);
+    }
+
+    /**
+     * @Route("/login-check", name="article_login_check")
+     */
+    public function loginCheckAction() {
+    }
+
+    /**
+     * @Route("/logout", name="article_logout")
+     */
+    public function logoutAction() {
     }
 }

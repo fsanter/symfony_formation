@@ -1,17 +1,43 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    toto: {password: totolepass, roles: [ROLE_ADMIN, ROLE_ARTICLE]}
+                    titi: {password: titilepass, roles: []}
+                    superadmin: {password: admin, roles: [ROLE_SUPER_ADMIN]}
+        # ici vous pouvez ajouter votre provider, pour que votre entité user soit
+        # reconnu comme une classe User valide pour symfony
+        # ce qui permerttra au framework de faire les requêtes en base
+        # pour la connexion (et autres...) automatiquement
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ARTICLE]
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        article:
+            pattern: ^/article
+            anonymous: true
+            # préciser le formulaire d'identification pour cde firewall
+            form_login:
+                login_path: /article/login
+                check_path: /article/login-check
+                default_target_path: /article/login
+            logout:
+                path: /article/logout
+                target: /article/login
 
         main:
             anonymous: ~
@@ -22,3 +48,8 @@ security:
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
+
+    access_control:
+        - { path: /article/login-check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /article/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/article, roles: ROLE_ADMIN }

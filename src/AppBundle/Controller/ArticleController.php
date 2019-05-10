@@ -25,7 +25,7 @@ class ArticleController extends Controller
 
         // récupérer un seul article depuis la base de données
         $em = $this->getDoctrine()->getManager();
-        $article = $em->getRepository("AppBundle:Article")->find(2);
+        $article = $em->getRepository("AppBundle:Article")->find(21);
         $em = $this->getDoctrine()->getManager();
         // générer une page d'erreur 404 si l'article n'existe pas
         if ($article == null) {
@@ -40,7 +40,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/article/view/{id}", name="article_view_url")
+     * @Route("/view/{id}", name="article_view_url")
      */
     public function viewUrlAction($id) {
         // récupérer un seul article depuis la base de données
@@ -71,7 +71,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/article/insert", name="article_insert")
+     * @Route("/insert", name="article_insert")
      */
     public function insertAction() {
         $article = new Article();
@@ -91,7 +91,7 @@ class ArticleController extends Controller
     }
 
     /**
-     * @Route("/article/view-all", name="article_view_all")
+     * @Route("/view-all", name="article_view_all")
      */
     public function viewAllAction() {
         // récupérer le manager de doctrine pour récupérer les articles en bdd

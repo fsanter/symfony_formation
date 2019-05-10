@@ -13,6 +13,7 @@ twig:
 article:
   resource: '@AppBundle/Controller/ArticleController.php'
   type: annotation
+  prefix: article
 
 user:
   resource: '@AppBundle/Controller/UserController.php'
@@ -21,6 +22,7 @@ user:
 article_form:
   resource: '@AppBundle/Controller/ArticleFormController.php'
   type: annotation
+  prefix: article
 
 service:
   resource: '@AppBundle/Controller/ServiceController.php'
