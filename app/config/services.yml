@@ -41,3 +41,4 @@ services:
         # injecter un service dans ce service
         arguments:
             - "@doctrine"
+            - "@form.factory"

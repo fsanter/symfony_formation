@@ -7,10 +7,12 @@ namespace AppBundle\Helper;
 class Util
 {
     private $doctrine;
+    private $formFactory;
 
-    public function __construct($paramServiceDoctrine)
+    public function __construct($paramServiceDoctrine, $serviceFaormFacotry)
     {
         $this->doctrine = $paramServiceDoctrine;
+        $this->formFactory = $serviceFaormFacotry;
     }
 
     public function getUniqCode() {

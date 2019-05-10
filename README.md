@@ -86,3 +86,13 @@ Créer une commande : php bin/console generate:command
     Ensuite vous pouvez coder votre algo en php symfony en fonction de votre
     besoin :)
 
+
+Les services, en résumé :
+    https://openclassrooms.com/fr/courses/3619856-developpez-votre-site-web-avec-le-framework-symfony/3621961-les-services-theorie-et-creation
+    Un service est une simple classe associée à une certaine configuration.
+
+    Le conteneur de services organise et instancie tous vos services, grâce à leur configuration.
+
+    Les services sont la base de Symfony, et sont très utilisés par le cœur même du framework.
+
+    L'injection de dépendances est assurée par le conteneur, qui connaît les arguments dont a besoin un service pour fonctionner, et les lui donne donc à sa création.
