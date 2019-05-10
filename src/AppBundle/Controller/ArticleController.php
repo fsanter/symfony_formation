@@ -26,7 +26,7 @@ class ArticleController extends Controller
         // récupérer un seul article depuis la base de données
         $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository("AppBundle:Article")->find(2);
-
+        $em = $this->getDoctrine()->getManager();
         // générer une page d'erreur 404 si l'article n'existe pas
         if ($article == null) {
             // le code s'arrêtera ici si on rentre dans le if

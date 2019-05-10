@@ -70,3 +70,13 @@ avec les méthodes :
 
   5- Ajouter dans la vue le champ categorie
     {{ form_row(form.category) }}
+
+
+Créer une commande : php bin/console generate:command
+    Un fichier Command.php est créé dans le dossier src/AppBundle/Command
+    Vous pouvez accéder aux services Symfony en récupérant le container :
+        - $this->getContainer()
+     Ou encore demaner des informations à l'utilisateur grâce au helper:
+        - $this->getHelper()
+    Ensuite vous pouvez coder votre algo en php symfony en fonction de votre
+    besoin :)
